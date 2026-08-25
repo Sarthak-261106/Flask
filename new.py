@@ -1,14 +1,13 @@
-from flask import Flask
+from flask import Flask, render_template
 
 web=Flask(__name__)
 
 @web.route('/')
-@web.route('/home')
+@web.route('/register')
 
 def home():
-    return "Welcome"
+    return render_template('register.html')
 
 if __name__ == '__main__':
     web.run(debug=True)
 
-    
