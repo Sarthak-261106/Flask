@@ -1,15 +1,21 @@
 from flask import Flask, render_template
+import os
 
 app = Flask(__name__)
+
+picfolder=os.path.join('static')
+
+app.config['UPLOAD_FOLDER']=picfolder
 
 @app.route("/")
 
 def first():
-    return render_template("home.html")
+    pic=os.path.join(app.config['UPLOAD_FOLDER'],'image1.jpg.jpg')
+    return render_template("home.html",user_image=pic)
 
 @app.route("/second")
 def second():
-    return "Welcome to second page"
+    return render_template("second.html")
 
 
 if __name__ == "__main__":
